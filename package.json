@@ -1,5 +1,6 @@
 {
   "name": "trylint-staged",
+  "description": "verifying prettier CI/CD on different platforms",
   "author": "Riley Shea",
   "license": "UNLICENSED",
   "version": "0.1.0",
