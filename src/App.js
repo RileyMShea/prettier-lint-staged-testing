@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+const x = [1, 2, 3].map((x) => x + 1);
+
 function App() {
   return (
     <div className="App">
