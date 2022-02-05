@@ -6,12 +6,16 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true
     },
     {
-      "matchPackageNames": ["postcss-loader"],
-      "allowedVersions": "4.3.0"
+      "matchPackageNames": ["husky"],
+      "allowedVersions": "6.0.0"
+    },
+    {
+      "matchPackageNames": ["lint-staged"],
+      "allowedVersions": "10.5.4"
     }
   ]
 }
