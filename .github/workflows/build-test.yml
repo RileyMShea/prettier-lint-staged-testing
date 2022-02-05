@@ -19,7 +19,8 @@ jobs:
         node: ["10", "12", "14", "16"]
         os: [ubuntu-latest, windows-latest, macos-latest]
     defaults:
-      shell: bash
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v2
         with:
