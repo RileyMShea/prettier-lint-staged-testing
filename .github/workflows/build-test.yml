@@ -34,7 +34,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           # cache: npm
-      - run: npm cache clean –force
+      - run: ls -al
+      - run: npm -v
+      - run: npm cache clean
       - run: npm i
       - run: npm run prettier -- --version
       - run: npm run prettier:diff
