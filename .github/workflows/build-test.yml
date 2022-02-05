@@ -8,8 +8,8 @@ on:
     branches:
       - main
       - releases/*
-    paths-ignore:
-      - "**.md"
+    # paths-ignore:
+    #   - "**.md"
 
 jobs:
   build:
