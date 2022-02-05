@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["postcss-loader"],
+      "allowedVersions": "4.3.0"
+    }
+  ]
+}

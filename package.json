@@ -1,5 +1,7 @@
 {
   "name": "trylint-staged",
+  "author": "Riley Shea",
+  "license": "UNLICENSED",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
