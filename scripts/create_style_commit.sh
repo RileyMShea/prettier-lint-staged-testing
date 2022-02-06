@@ -8,9 +8,10 @@
 
 PROJECT_DIR=$(git rev-parse --show-toplevel)
 
-npm run prettier -- --write . &&
+git config --global blame.ignorerevsfile .git-blame-ignore-revs &&
+    touch "$PROJECT_DIR/.git-blame-ignore-revs" &&
+    npm run prettier -- --write . &&
     git add . &&
     git commit -m "Repo-wide style changes." &&
-    git config --global blame.ignorerevsfile .git-blame-ignore-revs &&
-    touch "$PROJECT_DIR.git-blame-ignore-revs" &&
-    git log -1 --pretty=%H >>"$PROJECT_DIR/.git-blame-ignore-revs"
+    git log -1 --pretty=%H >>"$PROJECT_DIR/.git-blame-ignore-revs" &&
+    echo "Finished adding style commit."
