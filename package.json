@@ -21,8 +21,8 @@
     "eject": "react-scripts eject",
     "postinstall": "husky install",
     "prettier": "prettier",
-    "prettier:diff": "prettier --list-different \".\"",
-    "prettier:check": "prettier --check \".\"",
+    "prettier:diff": "prettier --list-different .",
+    "prettier:check": "prettier --check .",
     "lint-staged": "lint-staged",
     "donothing": "true"
   },
