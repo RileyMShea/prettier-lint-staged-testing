@@ -34,12 +34,38 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-      - run: ls -al
-      - run: npm -v
       - run: npm i
-      - run: npm run prettier -- --version
-      - run: npm run prettier:diff
       - run: npm run prettier:check
       - run: npm run lint-staged
       - run: npm run prettier:check
-      - run: git status
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: "14"
+          cache: npm
+      - run: npm i
+      - run: npm run deploy
+  sync-branch:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Merge development -> staging
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: development
+          target_branch: staging
+          github_token: ${{ github.token }}
