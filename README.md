@@ -1,6 +1,12 @@
 # Prettier & Lint-staged build testing
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 Uses lint-staged, husky, and prettier to seemlessly format your code before it's committed.
+
+## Setup
+
+Just run `npm install`. The `npm prepare script should do everything else for you.
 
 ## Notable docs
 
