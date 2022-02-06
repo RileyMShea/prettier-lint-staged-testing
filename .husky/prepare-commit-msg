@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
 
 # Git Hook for JIRA_TASK_ID
 # Adds to the top of your commit message `JIRA_TASK_ID`, based on the prefix of the
