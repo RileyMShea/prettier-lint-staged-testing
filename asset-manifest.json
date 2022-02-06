@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/prettier-lint-staged-testing/static/css/main.073c9b0a.css",
+    "main.js": "/prettier-lint-staged-testing/static/js/main.3cb9fbc5.js",
+    "static/js/787.a47879cb.chunk.js": "/prettier-lint-staged-testing/static/js/787.a47879cb.chunk.js",
+    "static/media/logo.svg": "/prettier-lint-staged-testing/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/prettier-lint-staged-testing/index.html",
+    "main.073c9b0a.css.map": "/prettier-lint-staged-testing/static/css/main.073c9b0a.css.map",
+    "main.3cb9fbc5.js.map": "/prettier-lint-staged-testing/static/js/main.3cb9fbc5.js.map",
+    "787.a47879cb.chunk.js.map": "/prettier-lint-staged-testing/static/js/787.a47879cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.3cb9fbc5.js"
+  ]
+}
