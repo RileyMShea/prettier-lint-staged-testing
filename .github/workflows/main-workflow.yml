@@ -1,18 +1,14 @@
-name: build-test
+name: main-workflow
 
 on:
-  pull_request:
-    paths-ignore:
-      - "**.md"
   push:
     branches:
-      - main
-      - releases/*
+      - development
     paths-ignore:
       - "**.md"
 
 jobs:
-  build:
+  lint:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -38,8 +34,24 @@ jobs:
       - run: npm run prettier:check
       - run: npm run lint-staged
       - run: npm run prettier:check
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: "14"
+          cache: npm
+      - run: npm i
+      - run: npm run test
   deploy:
-    needs: [build]
+    needs: [lint, test]
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -62,10 +74,10 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Merge development -> staging
+      - name: Merge developement -> main
         uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: development
-          target_branch: staging
+          target_branch: main
           github_token: ${{ github.token }}
