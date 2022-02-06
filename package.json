@@ -24,6 +24,7 @@
     "prettier:diff": "prettier --list-different .",
     "prettier:check": "prettier --check .",
     "lint-staged": "lint-staged",
+    "lint:timed": "TIMING=1 eslint ./",
     "donothing": "true"
   },
   "eslintConfig": {
