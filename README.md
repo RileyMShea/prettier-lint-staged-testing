@@ -13,24 +13,49 @@ Additionally, other git lifecycle hooks are used to run `npm test` and `eslint` 
 
 1. Clone this repo to your local machine
 2. Run `npm install`. The postinstall phase will add the git hooks to your local machine.
-3. Try adding a small, poorly-formated function to a file in the `/src` directory. IE
-   ```js
-   function add(a, b) {
-     return a + b;
+3. Try adding a small, inconsistently-formatted function to a file in the `/src` directory. IE
+
+   ```text
+   function add( a,  b){
+                return a   +b
    }
    ```
+
 4. Stage the file and commit the change.
 5. See if the lint-staged and prettier hooks are working. If you commit the command line,
    you should see output like:
 
 ```shell
-
+❯ git add .;git commit -m 'trying a badly formatted commit'
+Running pre-commit hook(s)
+✔ Preparing...
+✔ Running tasks...
+✔ Applying modifications...
+✔ Cleaning up...
+[development e15c27f] trying a badly formatted commit
+ 2 files changed, 20 insertions(+)
 ```
+
+6. Verify that prettier fixed formatting during the commit:
+
+   ```js
+   // The function has been formatted by prettier during pre-commit!
+   function add(a, b) {
+     return a + b;
+   }
+   ```
 
 Just run `npm install` and the all the hooks will be setup for your. The npm
 lifecycle script `postinstall` should do everything else for you.
 
 Now go ahead make a commit and you should see the code formatted.
+
+## Isn't this going to slow down my commits?
+
+TLDR; Using lint-staged and prettier during a pre-commit hook only adds ~700ms to the
+commit time. It's fast b/c it's not running the linting/formatting/testing on every single file in the repo, only staged files that have been modified.
+
+See [BENCHMARKS.md](BENCHMARKS.md) for a detailed speed comparison of the different approaches.
 
 ## Escape hatch
 
