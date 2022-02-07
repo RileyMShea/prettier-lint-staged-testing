@@ -2,13 +2,45 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Uses lint-staged, husky, and prettier to seemlessly format your code before it's committed.
+This repo showcases lint-staged, husky, and prettier to effortlessly format your code
+when it's committed.
+
+Additionally, other git lifecycle hooks are used to run tests and run eslint pre-push
 
 ## Setup
 
-Just run `npm install`. The `npm prepare script should do everything else for you.
+Just run `npm install` and the all the hooks will be setup for your. The npm
+lifecycle script `postinstall` should do everything else for you.
 
-## Notable docs
+Now go ahead make a commit and you should see the code formatted.
+
+## Escape hatch
+
+If theres a problem and you need to run a git command like `commit` or `push` without
+having the git hooks execute they can be bypassed by adding the `--no-verify` flag to
+your git command.
+
+```shell
+git commit -m "small change" --no-verify
+git push --no-verify
+```
+
+If using git with the GUI in vscode you also do this by enabling the
+"git.allowNoVerify" setting.
+
+```json
+// global settings.json
+{
+    ...
+"git.allowNoVerifyCommit":true
+}
+```
+
+## Removing git hooks
+
+`npm run husky:uninstall` to remove husky git-hook setup
+
+## External docs
 
 [husky](https://typicode.github.io/husky/#/)
 
@@ -24,14 +56,14 @@ bug that seems to only occur when using `git-bash`,`yarn`, and `husky` together.
 
 ### ./.husky/pre-commit
 
-Any command-line scripts you want to run and pass before code get's comitted
+Any command-line scripts you want to run and pass before code get's committed
 or npm scripts can be run. At the time of writing, this is used to run `lint-staged`
 which only runs prettier on staged files.
 
 ### .gitattributes
 
 This file is needed for Windows to make sure all platforms use the same line endings(LF).
-Git always stores it's version history as LF, but to help compatibilitiy windows users who don't use git
+Git always stores it's version history as LF, but to help compatibility windows users who don't use git
 bash(ie command prompt), it writes the actual files(not the version history) using CRLF.
 
 see [prettier End of Line](https://prettier.io/docs/en/options.html#end-of-line) for a
@@ -39,7 +71,7 @@ detailed explanation.
 
 ### ./husky/.gitignore && ./husky/\_/.gitignore
 
-When husky installs itself it generates a couple of git-ignores files that are local
+When husky installs itself, it generates a couple of git-ignores files that are local
 to it's folder.
 
 ### ./prettierrc
