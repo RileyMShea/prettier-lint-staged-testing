@@ -6,6 +6,9 @@ on:
       - development
     paths-ignore:
       - "**.md"
+      - "**.png"
+      - "cspell.json"
+      - ".vscode/"
 
 jobs:
   lint:
@@ -74,7 +77,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Merge developement -> main
+      - name: Merge development -> main
         uses: devmasx/merge-branch@master
         with:
           type: now
