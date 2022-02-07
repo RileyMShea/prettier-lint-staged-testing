@@ -1,5 +1,5 @@
 {
-  "name": "trylint-staged",
+  "name": "prettier-lint-staged-testing",
   "description": "verifying prettier CI/CD on different platforms",
   "author": "Riley Shea",
   "homepage": "https://rileymshea.github.io/prettier-lint-staged-testing",
