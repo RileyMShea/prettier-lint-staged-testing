@@ -3,4 +3,6 @@
 . "$(dirname "$0")/common.sh"
 
 
+echo "Running pre-commit hook(s)"
+
 ./node_modules/.bin/lint-staged
