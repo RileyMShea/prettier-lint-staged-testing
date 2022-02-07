@@ -30,8 +30,6 @@ git push --no-verify
 If using git with the GUI in vscode you also do this by enabling the
 "git.allowNoVerify" setting.
 
-`https://github.com/okonet/lint-staged#readme`
-
 ```json
 {
   ...
@@ -45,9 +43,9 @@ If using git with the GUI in vscode you also do this by enabling the
 
 ## External docs
 
-[husky](https://typicode.github.io/husky/#/)
-[prettier](https://prettier.io/docs/en/index.html)
-[lint-staged](https://github.com/okonet/lint-staged#readme)
+- [husky](https://typicode.github.io/husky/#/)
+- [prettier](https://prettier.io/docs/en/index.html)
+- [lint-staged](https://github.com/okonet/lint-staged#readme)
 
 ## Important files
 
