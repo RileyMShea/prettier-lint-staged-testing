@@ -3,17 +3,59 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ![git hooks lifecycle image](https://blog.gitguardian.com/content/images/2020/04/hook-graphic-4.png)
-This repo showcases lint-staged, husky, and prettier to effortlessly format your code
-when it's committed.
+This repo showcases usage of npm cli tools: lint-staged, husky, and prettier;
+enabling automatic formatting/linting/testing when used in git life-cycle hooks such as
+`pre-commit`.
 
 Additionally, other git lifecycle hooks are used to run `npm test` and `eslint` during the `pre-push` git life-cycle hook.
 
 ## Setup
 
+1. Clone this repo to your local machine
+2. Run `npm install`. The postinstall phase will add the git hooks to your local machine.
+3. Try adding a small, inconsistently-formatted function to a file in the `/src` directory. IE
+
+   ```text
+   function add( a,  b){
+                return a   +b
+   }
+   ```
+
+4. Stage the file and commit the change.
+5. See if the lint-staged and prettier hooks are working. If you commit the command line,
+   you should see output like:
+
+```shell
+❯ git add .;git commit -m 'trying a badly formatted commit'
+Running pre-commit hook(s)
+✔ Preparing...
+✔ Running tasks...
+✔ Applying modifications...
+✔ Cleaning up...
+[development e15c27f] trying a badly formatted commit
+ 2 files changed, 20 insertions(+)
+```
+
+6. Verify that prettier fixed formatting during the commit:
+
+   ```js
+   // The function has been formatted by prettier during pre-commit!
+   function add(a, b) {
+     return a + b;
+   }
+   ```
+
 Just run `npm install` and the all the hooks will be setup for your. The npm
 lifecycle script `postinstall` should do everything else for you.
 
 Now go ahead make a commit and you should see the code formatted.
+
+## Isn't this going to slow down my commits?
+
+TLDR; Using lint-staged and prettier during a pre-commit hook only adds ~700ms to the
+commit time. It's fast b/c it's not running the linting/formatting/testing on every single file in the repo, only staged files that have been modified.
+
+See [BENCHMARKS.md](BENCHMARKS.md) for a detailed speed comparison of the different approaches.
 
 ## Escape hatch
 
@@ -29,8 +71,6 @@ git push --no-verify
 If using git with the GUI in vscode you also do this by enabling the
 "git.allowNoVerify" setting.
 
-`https://github.com/okonet/lint-staged#readme`
-
 ```json
 {
   ...
@@ -44,9 +84,9 @@ If using git with the GUI in vscode you also do this by enabling the
 
 ## External docs
 
-[husky](https://typicode.github.io/husky/#/)
-[prettier](https://prettier.io/docs/en/index.html)
-[lint-staged](https://github.com/okonet/lint-staged#readme)
+- [husky](https://typicode.github.io/husky/#/)
+- [prettier](https://prettier.io/docs/en/index.html)
+- [lint-staged](https://github.com/okonet/lint-staged#readme)
 
 ## Important files
 
@@ -70,13 +110,13 @@ This file is needed for Windows to make sure all platforms use the same line end
 Git always stores it's version history as LF, but to help compatibility windows users who don't use git
 bash(ie command prompt), it writes the actual files(not the version history) using CRLF.
 
-see [prettier End of Line](https://prettier.io/docs/en/options.html#end-of-line) for a
+See [prettier End of Line](https://prettier.io/docs/en/options.html#end-of-line) for a
 detailed explanation.
 
 ### ./husky/.gitignore && ./husky/\_/.gitignore
 
 When husky installs itself, it generates a couple of git-ignores files that are local
-to it's folder.
+to it's own `./.husky/` folder. You shouldn't need to touch or modify these files.
 
 ### ./prettierrc
 
