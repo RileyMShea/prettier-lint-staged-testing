@@ -3,4 +3,4 @@
 . "$(dirname "$0")/common.sh"
 
 
-node ./node_modules/.bin/lint-staged
+./node_modules/.bin/lint-staged
