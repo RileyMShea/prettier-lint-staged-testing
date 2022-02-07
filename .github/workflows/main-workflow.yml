@@ -6,6 +6,9 @@ on:
       - development
     paths-ignore:
       - "**.md"
+      - "**.png"
+      - "cspell.json"
+      - ".vscode/"
 
 jobs:
   lint:
@@ -66,7 +69,12 @@ jobs:
           node-version: "14"
           cache: npm
       - run: npm i
-      - run: npm run deploy
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   sync-branch:
     needs: [deploy]
     runs-on: ubuntu-latest
@@ -74,7 +82,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Merge developement -> main
+      - name: Merge development -> main
         uses: devmasx/merge-branch@master
         with:
           type: now

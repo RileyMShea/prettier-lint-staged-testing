@@ -6,11 +6,14 @@
   "language": "en",
   // words - list of words to be always considered correct
   "words": [
+    "automerge",
+    "browserslist",
     "githubusercontent",
     "mkdirp",
     "predeploy",
     "prettierignore",
     "prettierrc",
+    "renovatebot",
     "streetsidesoftware",
     "tsmerge",
     "visualstudio",
