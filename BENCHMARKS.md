@@ -21,5 +21,5 @@ Notes:
   directly with node. This adds a delay of ~200ms to any command just by choosing to
   use the convenience of npm scripts.
 - Running `prettier` via `node ./node_modules/.bin/lint-staged` give us a 760ms
-  pre-commit script. This is more than 5x faster than running eslint across the
+  pre-commit script. This is over 5x faster compared to running eslint across the
   entire project.
