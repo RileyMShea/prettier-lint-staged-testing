@@ -3,8 +3,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ![git hooks lifecycle image](https://blog.gitguardian.com/content/images/2020/04/hook-graphic-4.png)
-This repo showcases lint-staged, husky, and prettier to effortlessly format your code
-when it's committed.
+This repo showcases usage of npm cli tools: lint-staged, husky, and prettier;
+enabling automatic formatting/linting/testing when used in git life-cycle hooks such as
+`pre-commit`.
 
 Additionally, other git lifecycle hooks are used to run `npm test` and `eslint` during the `pre-push` git life-cycle hook.
 
