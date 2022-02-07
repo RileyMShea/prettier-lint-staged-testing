@@ -2,10 +2,11 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
+![git hooks lifecycle image](https://blog.gitguardian.com/content/images/2020/04/hook-graphic-4.png)
 This repo showcases lint-staged, husky, and prettier to effortlessly format your code
 when it's committed.
 
-Additionally, other git lifecycle hooks are used to run tests and run eslint pre-push
+Additionally, other git lifecycle hooks are used to run `npm test` and `eslint` during the `pre-push` git life-cycle hook.
 
 ## Setup
 
@@ -28,11 +29,12 @@ git push --no-verify
 If using git with the GUI in vscode you also do this by enabling the
 "git.allowNoVerify" setting.
 
+`https://github.com/okonet/lint-staged#readme`
+
 ```json
-// global settings.json
 {
-    ...
-"git.allowNoVerifyCommit":true
+  ...
+  "git.allowNoVerifyCommit":true
 }
 ```
 
@@ -43,6 +45,8 @@ If using git with the GUI in vscode you also do this by enabling the
 ## External docs
 
 [husky](https://typicode.github.io/husky/#/)
+[prettier](https://prettier.io/docs/en/index.html)
+[lint-staged](https://github.com/okonet/lint-staged#readme)
 
 ## Important files
 
@@ -94,28 +98,32 @@ See [Prettier - ignoring code](https://prettier.io/docs/en/ignore.html)
 devDependencies:
 
 ```json
+...
  "devDependencies": {
     ...
     "husky": "6.0.0",
     "lint-staged": "10.5.4",
     "prettier": "2.5.1"
-    ...
   },
+...
 ```
 
-- husky provides the pre-commit ability
-- lint-staged provides the ability to run prettier(and/or other commands) only staged
+- `husky` provides the git hooks capabilities to run pre-commit, pre-push, and other
+  git lifecycle hooks.
+- `lint-staged` provides the ability to run prettier(and/or other commands) only staged
   files, this speeds of the pre-commit time.
-- prettier is the formatter that gets run to format staged files during the pre-commit
-  hook.
+- `prettier` is the code formatter that gets run to format staged files during the pre-commit hook.
 
 lint-staged:
 
 ```json
   "lint-staged": {
-    "*.{js,jsx,json,ts,tsx,css,md,html}": "prettier --write"
+    "*.{js,jsx,json,ts,tsx,css,md,html}": "prettier --write",
+    "*.{foo,bar}": "foo bar"
   }
 ```
 
 These are the commands that will be run **ONLY** on staged files
-when running `npm run lint-staged` or `yarn lint-staged`.
+when running `npm run lint-staged` or `yarn lint-staged`. Again, the reason to only
+run on staged files is to make the hooks run fast, since otherwise it would run across
+all files, even unchanged files.
