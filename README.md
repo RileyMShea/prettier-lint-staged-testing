@@ -36,8 +36,6 @@ If using git with the GUI in vscode you also do this by enabling the
 }
 ```
 
-
-
 ## Removing git hooks
 
 `npm run husky:uninstall` to remove husky git-hook setup
