@@ -69,13 +69,13 @@ This file is needed for Windows to make sure all platforms use the same line end
 Git always stores it's version history as LF, but to help compatibility windows users who don't use git
 bash(ie command prompt), it writes the actual files(not the version history) using CRLF.
 
-see [prettier End of Line](https://prettier.io/docs/en/options.html#end-of-line) for a
+See [prettier End of Line](https://prettier.io/docs/en/options.html#end-of-line) for a
 detailed explanation.
 
 ### ./husky/.gitignore && ./husky/\_/.gitignore
 
 When husky installs itself, it generates a couple of git-ignores files that are local
-to it's folder.
+to it's own `./.husky/` folder. You shouldn't need to touch or modify these files.
 
 ### ./prettierrc
 
