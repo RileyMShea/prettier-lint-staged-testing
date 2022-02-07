@@ -11,6 +11,22 @@ Additionally, other git lifecycle hooks are used to run `npm test` and `eslint` 
 
 ## Setup
 
+1. Clone this repo to your local machine
+2. Run `npm install`. The postinstall phase will add the git hooks to your local machine.
+3. Try adding a small, poorly-formated function to a file in the `/src` directory. IE
+   ```js
+   function add(a, b) {
+     return a + b;
+   }
+   ```
+4. Stage the file and commit the change.
+5. See if the lint-staged and prettier hooks are working. If you commit the command line,
+   you should see output like:
+
+```shell
+
+```
+
 Just run `npm install` and the all the hooks will be setup for your. The npm
 lifecycle script `postinstall` should do everything else for you.
 
