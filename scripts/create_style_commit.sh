@@ -8,7 +8,7 @@
 
 PROJECT_DIR=$(git rev-parse --show-toplevel)
 
-git config --global blame.ignorerevsfile .git-blame-ignore-revs &&
+git config --local blame.ignorerevsfile .git-blame-ignore-revs &&
     touch "$PROJECT_DIR/.git-blame-ignore-revs" &&
     npm run prettier -- --write . &&
     git add . &&
